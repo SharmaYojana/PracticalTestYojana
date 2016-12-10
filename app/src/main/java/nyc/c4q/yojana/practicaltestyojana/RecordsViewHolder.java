@@ -6,9 +6,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import java.util.List;
-
-import nyc.c4q.yojana.practicaltestyojana.Pojo.Data;
 import nyc.c4q.yojana.practicaltestyojana.Pojo.Record;
 
 /**
@@ -30,9 +27,11 @@ public class RecordsViewHolder extends RecyclerView.ViewHolder {
         return inflater.inflate(R.layout.records_view_holder, parent, false);
     }
 
-    public void bind(final Data data) {
-        List<Record> name = data.getRecords();
-        liked.setText((CharSequence) name);
+    public void bind(final Record record) {
+        String name = record.getUsername();
+        liked.setText(name);
+        liked.setText("jmgj");
+
     }
 
 }

@@ -6,7 +6,6 @@ import android.view.ViewGroup;
 
 import java.util.List;
 
-import nyc.c4q.yojana.practicaltestyojana.Pojo.Data;
 import nyc.c4q.yojana.practicaltestyojana.Pojo.Record;
 
 /**
@@ -15,11 +14,11 @@ import nyc.c4q.yojana.practicaltestyojana.Pojo.Record;
 
 public class RecordsAdapter extends RecyclerView.Adapter{
 private Context context;
-    private List<Data> list;
+
     private List<Record> recordList;
 
-    public RecordsAdapter(List<Data> list){
-        this.list = list;
+    public RecordsAdapter(List<Record> list){
+        this.recordList = list;
 
 
         }
@@ -31,11 +30,11 @@ private Context context;
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
         RecordsViewHolder vh = (RecordsViewHolder) holder;
-        vh.bind(list.get(position));
+        vh.bind(recordList.get(position));
     }
 
     @Override
     public int getItemCount() {
-        return list.size();
+        return recordList.size();
     }
 }
