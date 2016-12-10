@@ -2,6 +2,8 @@ package nyc.c4q.yojana.practicaltestyojana;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 
 import java.util.List;
@@ -21,6 +23,9 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        final RecyclerView myRecyclerView = (RecyclerView) findViewById(R.id.records_recycler_view);
+
+
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(URL)
                 .addConverterFactory(GsonConverterFactory.create()).build();
@@ -33,8 +38,8 @@ public class MainActivity extends AppCompatActivity {
             public void onResponse(Call<List<Data>> call, Response<List<Data>> response) {
                 List<Data> list = response.body();
                 Log.d("Retrofit success", String.valueOf(list.get(0).getRecords()));
-//                recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
-//                recyclerView.setAdapter(new CountryAdapter(list));
+                myRecyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
+                myRecyclerView.setAdapter(new RecordsAdapter(list));
             }
 
             @Override
